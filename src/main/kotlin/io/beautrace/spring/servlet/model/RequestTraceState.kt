@@ -6,5 +6,5 @@ import org.springframework.web.context.annotation.RequestScope
 @Component
 @RequestScope
 open class RequestTraceState(
-    open var methodCalls: MutableSet<String> = mutableSetOf(),
+    open var methodCalls: ArrayDeque<MethodIO> = ArrayDeque(),
 )
