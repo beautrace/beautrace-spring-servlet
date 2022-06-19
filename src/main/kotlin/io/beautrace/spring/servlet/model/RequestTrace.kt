@@ -5,6 +5,6 @@ import org.springframework.web.context.annotation.RequestScope
 
 @Component
 @RequestScope
-open class RequestTraceState(
-    open var methodCalls: ArrayDeque<MethodIO> = ArrayDeque(),
+open class RequestTrace(
+    open var requestToMethods: RequestToMethods? = null,
 )

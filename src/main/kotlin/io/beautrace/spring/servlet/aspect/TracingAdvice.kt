@@ -3,14 +3,17 @@ package io.beautrace.spring.servlet.aspect
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.beautrace.spring.servlet.ApplicationContextHolder
 import io.beautrace.spring.servlet.model.MethodIO
-import io.beautrace.spring.servlet.model.RequestTraceState
+import io.beautrace.spring.servlet.common.RequestLogger
+import io.beautrace.spring.servlet.model.RequestToMethods
+import io.beautrace.spring.servlet.model.RequestTrace
 import io.beautrace.spring.servlet.model.ThrowableWrapper
 import org.aopalliance.intercept.MethodInterceptor
 import org.aopalliance.intercept.MethodInvocation
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.web.context.request.RequestContextHolder
+import org.springframework.web.context.request.ServletRequestAttributes
 import java.lang.reflect.Parameter
-import java.nio.file.Paths
 
 open class TracingAdvice : MethodInterceptor {
 
@@ -23,8 +26,7 @@ open class TracingAdvice : MethodInterceptor {
         val methodIO = if (parameters.isNotEmpty()) {
             val paramsToArgs = parameters.map(Parameter::toString).zip(arguments).toList()
             MethodIO(method.toGenericString(), paramsToArgs)
-        } else
-            MethodIO(method.toGenericString(), rawArguments = arguments.toList())
+        } else MethodIO(method.toGenericString(), rawArguments = arguments.toList())
         val result: Any?
         try {
             result = invocation.proceed()
@@ -34,12 +36,16 @@ open class TracingAdvice : MethodInterceptor {
             methodIO.exception = ThrowableWrapper(ex)
             throw ex
         } finally {
-            val requestTraceState = ApplicationContextHolder.getBean(RequestTraceState::class.java)
-            requestTraceState.methodCalls.addFirst(methodIO)
-            val mapper = ApplicationContextHolder.getBean(ObjectMapper::class.java)
-            mapper.writeValue(Paths.get("beautrace.json").toFile(), requestTraceState.methodCalls)
-            if (log.isDebugEnabled)
-                log.debug("requestTraceState.methodCalls: {}", mapper.writeValueAsString(requestTraceState.methodCalls))
+            val requestTrace = ApplicationContextHolder.getBean(RequestTrace::class.java)
+            if (requestTrace.requestToMethods == null) {
+                val httpRequest = (RequestContextHolder.getRequestAttributes() as ServletRequestAttributes).request
+                requestTrace.requestToMethods = RequestToMethods(RequestLogger.logRequest(httpRequest), ArrayDeque())
+            }
+            requestTrace.requestToMethods!!.methodCalls.addFirst(methodIO)
+            if (log.isDebugEnabled) {
+                val mapper = ApplicationContextHolder.getBean(ObjectMapper::class.java)
+                log.debug("requestTraceState.methodCalls: {}", mapper.writeValueAsString(requestTrace.requestToMethods))
+            }
         }
         return result
     }
