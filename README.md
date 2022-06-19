@@ -47,7 +47,7 @@ beautrace.output-file=${user.home}/beautrace.json
 ### After your app did some request processing, go check the output file
 
 File contents look like the following:
-```json
+```jsonc
 ...
 {"request":"GET /api/exception?argOne=1234&argTwo=wow%20string,"methodCalls":[...]}
 {"request":"GET /api/exception?argOne=1234&argTwo=wow%20string","methodCalls":[...]}
