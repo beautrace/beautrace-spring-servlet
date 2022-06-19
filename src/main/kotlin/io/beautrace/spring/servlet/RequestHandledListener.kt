@@ -41,7 +41,7 @@ open class RequestHandledListener(
                 try {
                     writer.newLine()
                     jacksonObjectMapper.writeValue(writer, requestTrace.requestToMethods)
-                } catch (ex: Exception) {
+                } catch (ex: Throwable) {
                     log.error(
                         "Exception occurred when trying to write to an output file. Exception: {}",
                         ex.localizedMessage
