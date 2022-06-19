@@ -11,7 +11,7 @@ apply(plugin = "io.spring.dependency-management")
 
 group = "io.beautrace"
 version = "1.0-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
     publications {
@@ -50,5 +50,5 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "1.8"
 }
