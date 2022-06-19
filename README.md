@@ -68,7 +68,7 @@ The library intercepts execution of methods from the package you specify and log
 request is handled, this data is written to a file at a location you specify.
 
 Here is how example output looks like for some http request:
-```json
+```jsonc
 {
   // Http request details 
   "request": "GET /api/mock?argOne=1234&argTwo=wow%20string",
@@ -108,7 +108,7 @@ Here is how example output looks like for some http request:
 ```
 
 Here is a snippet of how unhandled exceptions are logged:
-```json
+```jsonc
 {
   ...
   
