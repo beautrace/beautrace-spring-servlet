@@ -1,6 +1,6 @@
-package io.beautrace.spring.servlet
+package com.beautrace.spring.servlet
 
-import io.beautrace.spring.servlet.aspect.TracingAdvice
+import com.beautrace.spring.servlet.aspect.TracingAdvice
 import org.springframework.aop.Advisor
 import org.springframework.aop.aspectj.AspectJExpressionPointcut
 import org.springframework.aop.support.DefaultPointcutAdvisor
@@ -19,7 +19,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy
 @SpringBootConfiguration
 @EnableConfigurationProperties(BeautraceProperties::class)
 // Enable Beautrace only if root-package property is set
-@ConditionalOnExpression("'\${${BEAUTRACE_CONFIGURATION_PREFIX}.root-package}' > ''")
+@ConditionalOnExpression("'\${$BEAUTRACE_CONFIGURATION_PREFIX.root-package}' > ''")
 @EnableAspectJAutoProxy
 open class BeautraceAutoConfiguration {
 

@@ -1,4 +1,4 @@
-package io.beautrace.spring.servlet.model
+package com.beautrace.spring.servlet.model
 
 import org.springframework.stereotype.Component
 import org.springframework.web.context.annotation.RequestScope

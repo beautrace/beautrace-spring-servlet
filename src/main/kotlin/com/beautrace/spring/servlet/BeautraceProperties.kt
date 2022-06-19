@@ -1,4 +1,4 @@
-package io.beautrace.spring.servlet
+package com.beautrace.spring.servlet
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

@@ -9,7 +9,7 @@ plugins {
 }
 apply(plugin = "io.spring.dependency-management")
 
-group = "io.beautrace"
+group = "com.beautrace"
 version = "1.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 

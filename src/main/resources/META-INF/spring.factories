@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.beautrace.spring.servlet.BeautraceAutoConfiguration
+  com.beautrace.spring.servlet.BeautraceAutoConfiguration

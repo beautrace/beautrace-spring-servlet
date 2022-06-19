@@ -1,4 +1,4 @@
-package io.beautrace.spring.servlet.model
+package com.beautrace.spring.servlet.model
 
 class ThrowableWrapper(ex: Throwable) {
     val localizedMessage: String

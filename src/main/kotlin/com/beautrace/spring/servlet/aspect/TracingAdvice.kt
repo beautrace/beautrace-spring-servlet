@@ -1,12 +1,12 @@
-package io.beautrace.spring.servlet.aspect
+package com.beautrace.spring.servlet.aspect
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.beautrace.spring.servlet.ApplicationContextHolder
-import io.beautrace.spring.servlet.model.MethodIO
-import io.beautrace.spring.servlet.common.RequestLogger
-import io.beautrace.spring.servlet.model.RequestToMethods
-import io.beautrace.spring.servlet.model.RequestTrace
-import io.beautrace.spring.servlet.model.ThrowableWrapper
+import com.beautrace.spring.servlet.ApplicationContextHolder
+import com.beautrace.spring.servlet.model.MethodIO
+import com.beautrace.spring.servlet.common.RequestLogger
+import com.beautrace.spring.servlet.model.RequestToMethods
+import com.beautrace.spring.servlet.model.RequestTrace
+import com.beautrace.spring.servlet.model.ThrowableWrapper
 import org.aopalliance.intercept.MethodInterceptor
 import org.aopalliance.intercept.MethodInvocation
 import org.slf4j.Logger

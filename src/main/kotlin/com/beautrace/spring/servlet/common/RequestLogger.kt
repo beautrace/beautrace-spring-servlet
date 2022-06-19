@@ -1,4 +1,4 @@
-package io.beautrace.spring.servlet.common
+package com.beautrace.spring.servlet.common
 
 import org.springframework.web.filter.AbstractRequestLoggingFilter
 import javax.servlet.http.HttpServletRequest

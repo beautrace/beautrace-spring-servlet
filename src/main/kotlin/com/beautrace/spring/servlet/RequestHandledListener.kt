@@ -1,7 +1,7 @@
-package io.beautrace.spring.servlet
+package com.beautrace.spring.servlet
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.beautrace.spring.servlet.model.RequestTrace
+import com.beautrace.spring.servlet.model.RequestTrace
 import org.slf4j.LoggerFactory
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
