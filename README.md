@@ -49,7 +49,7 @@ beautrace.output-file=${user.home}/beautrace.json
 File contents look like the following:
 ```jsonc
 ...
-{"request":"GET /api/exception?argOne=1234&argTwo=wow%20string,"methodCalls":[...]}
+{"request":"GET /api/exception?argOne=1234&argTwo=wow%20string","methodCalls":[...]}
 {"request":"GET /api/exception?argOne=1234&argTwo=wow%20string","methodCalls":[...]}
 ...
 ```
