@@ -17,12 +17,12 @@ One use case could be debugging and code analysis. Another big one - monitoring 
 
 Gradle (Groovy)
 ```groovy
-runtimeOnly "com.beautrace:beautrace-spring-servlet:1.0.0"
+runtimeOnly "com.beautrace:beautrace-spring-servlet:1.0.2"
 ```
 
 Gradle (Kotlin)
 ```kotlin
-runtimeOnly("com.beautrace:beautrace-spring-servlet:1.0.0")
+runtimeOnly("com.beautrace:beautrace-spring-servlet:1.0.2")
 ```
 
 Maven
@@ -30,7 +30,7 @@ Maven
 <dependency>
     <groupId>com.beautrace</groupId>
     <artifactId>beautrace-spring-servlet</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <scope>runtime</scope>
 </dependency>
 ```

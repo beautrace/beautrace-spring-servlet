@@ -21,33 +21,35 @@ open class RequestHandledListener(
 
     @EventListener
     open fun requestHandled(event: ServletRequestHandledEvent) {
-        if (requestTrace.requestToMethods!!.request.contains(event.requestUrl)) {
-            beautraceProperties.outputFile?.let { outputFileName ->
-                val writer: BufferedWriter
-                try {
-                    writer = BufferedWriter(
-                        OutputStreamWriter(FileOutputStream(outputFileName, true), "UTF-8")
-                    )
-                } catch (ex: FileNotFoundException) {
-                    log.error("Cannot open or create a specified output file. Exception: {}", ex.localizedMessage)
-                    return
-                } catch (ex: SecurityException) {
-                    log.error(
-                        "Cannot obtain write access to the specified out file. Exception: {}",
-                        ex.localizedMessage
-                    )
-                    return
-                }
-                try {
-                    writer.newLine()
-                    jacksonObjectMapper.writeValue(writer, requestTrace.requestToMethods)
-                } catch (ex: Throwable) {
-                    log.error(
-                        "Exception occurred when trying to write to an output file. Exception: {}",
-                        ex.localizedMessage
-                    )
-                } finally {
-                    writer.close()
+        requestTrace.requestToMethods?.let {
+            if (it.request.contains(event.requestUrl)) {
+                beautraceProperties.outputFile?.let { outputFileName ->
+                    val writer: BufferedWriter
+                    try {
+                        writer = BufferedWriter(
+                            OutputStreamWriter(FileOutputStream(outputFileName, true), "UTF-8")
+                        )
+                    } catch (ex: FileNotFoundException) {
+                        log.error("Cannot open or create a specified output file. Exception: {}", ex.localizedMessage)
+                        return
+                    } catch (ex: SecurityException) {
+                        log.error(
+                            "Cannot obtain write access to the specified out file. Exception: {}",
+                            ex.localizedMessage
+                        )
+                        return
+                    }
+                    try {
+                        writer.newLine()
+                        jacksonObjectMapper.writeValue(writer, requestTrace.requestToMethods)
+                    } catch (ex: Throwable) {
+                        log.error(
+                            "Exception occurred when trying to write to an output file. Exception: {}",
+                            ex.localizedMessage
+                        )
+                    } finally {
+                        writer.close()
+                    }
                 }
             }
         }
