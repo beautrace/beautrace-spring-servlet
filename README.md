@@ -1,8 +1,9 @@
-## What is it?
+# What is it?
 
 A library to trace execution of methods per each [Spring](https://spring.io/) Servlet's HTTP request.
 
-## Why would I want to use it?
+
+# Why would I want to use it?
 
 If you need a convenient way to trace which methods were executed per HTTP request - in what order, 
 what were the method arguments and execution results.
@@ -12,7 +13,7 @@ a root package - for example, to log only application-specific methods and ignor
 
 One use case could be debugging and code analysis. Another big one - monitoring purposes.
 
-## Quickstart
+# Quickstart
 ### Add library to your Spring Boot app
 
 Gradle (Groovy)
@@ -47,9 +48,9 @@ beautrace.output-file=${user.home}/beautrace.json
 ### After your app did some request processing, go check the output file
 
 File contents look like the following:
-```json
+```jsonc
 ...
-{"request":"GET /api/exception?argOne=1234&argTwo=wow%20string,"methodCalls":[...]}
+{"request":"GET /api/exception?argOne=1234&argTwo=wow%20string","methodCalls":[...]}
 {"request":"GET /api/exception?argOne=1234&argTwo=wow%20string","methodCalls":[...]}
 ...
 ```
@@ -57,18 +58,18 @@ File contents look like the following:
 Each line represents tracing for a different request. Each line is a json object. You can now pick your favorite json parser
 and explore tracing for a request of your interest.
 
-## Example projects
+# Example projects
 
 You can check the library in action by exploring demo projects:
 - Spring Boot app on Kotlin / Gradle: https://github.com/beautrace/beautrace-spring-servlet-app
 
-## How does the library work?
+# How does the library work?
 
 The library intercepts execution of methods from the package you specify and logs them. Once the http 
 request is handled, this data is written to a file at a location you specify.
 
 Here is how example output looks like for some http request:
-```json
+```jsonc
 {
   // Http request details 
   "request": "GET /api/mock?argOne=1234&argTwo=wow%20string",
@@ -108,7 +109,7 @@ Here is how example output looks like for some http request:
 ```
 
 Here is a snippet of how unhandled exceptions are logged:
-```json
+```jsonc
 {
   ...
   
@@ -157,7 +158,7 @@ Here is a snippet of how unhandled exceptions are logged:
 }
 ```
 
-## FAQ
+# FAQ
 
 ### What projects this library is compatible with?
 
