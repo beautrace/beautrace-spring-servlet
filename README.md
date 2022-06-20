@@ -62,6 +62,7 @@ and explore tracing for a request of your interest.
 
 You can check the library in action by exploring demo projects:
 - Spring Boot app on Kotlin / Gradle: https://github.com/beautrace/beautrace-spring-servlet-app
+- Spring Boot app on Java / Maven: https://github.com/beautrace/beautrace-spring-servlet-app-java
 
 # How does the library work?
 
